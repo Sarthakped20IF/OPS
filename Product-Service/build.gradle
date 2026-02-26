@@ -36,6 +36,15 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 //	Aop dependency
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
+//	caching dependencies
+	implementation 'org.springframework.boot:spring-boot-starter-cache'
+	implementation 'org.ehcache:ehcache'
+	implementation 'org.hibernate.orm:hibernate-jcache'
+	implementation 'org.glassfish.jaxb:jaxb-runtime'
+	implementation 'javax.xml.bind:jaxb-api:2.3.1'
+	implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.8'
+
+
 }
 
 tasks.named('test') {

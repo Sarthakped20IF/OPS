@@ -5,12 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-@Table(name = "prdoucts")
+@Table(name = "products")
 @Data
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +26,7 @@ public class ProductEntity {
     private Double price;
     @Column(nullable = false)
     private Integer stock;
+    @NonNull
+    @Column(nullable = false)
+    private String category;
 }
