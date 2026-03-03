@@ -10,15 +10,10 @@ public class OrderItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Long productId;
-
     private Integer quantity;
-
     private Double price;
-
     private Double subTotal;
-
     @ManyToOne
     @JoinColumn(name = "orderId")
     private OrderEntity order;

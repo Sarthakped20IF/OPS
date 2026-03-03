@@ -12,4 +12,3 @@ public class ProductResponse {
     private Integer stock;
     private String category;
 }
-

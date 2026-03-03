@@ -63,6 +63,8 @@ public class ProductService {
         return productRepository.findAll(pageable);
     }
 
+
+
     private ProductResponse mapToResponse(ProductEntity product) {
         ProductResponse response = new ProductResponse();
         response.setId(product.getId());

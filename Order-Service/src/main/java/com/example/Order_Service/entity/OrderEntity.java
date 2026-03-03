@@ -3,6 +3,7 @@ package com.example.Order_Service.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
 import java.util.UUID;
 
 //OrderEntity
@@ -24,4 +25,6 @@ public class OrderEntity {
     private Double Totalamt;
     private String status;
 
+    @OneToMany(mappedBy = "order",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<OrderItemEntity> Items;
 }

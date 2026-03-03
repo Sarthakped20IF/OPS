@@ -1,11 +1,14 @@
 package com.example.Order_Service.dtos;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
-import java.util.UUID;
+import java.util.List;
 
 @Data
 public class OrderRequest {
-    private Long productId;
-    private Integer quantity;
+    @Valid
+    @NotEmpty(message = "List must contain Orders")
+    private List<OrderItemRequest> items;
 }

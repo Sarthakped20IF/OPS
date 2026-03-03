@@ -7,9 +7,7 @@ import java.util.UUID;
 
 @Data public class OrderResponse {
     private UUID orderId;
-    private Long productId;
-    private Integer quantity;
-    private Double totalAmt;
+    private Double totalAmount;
     private String orderStatus;
     private List<OrderItemResponse>items;
 }
