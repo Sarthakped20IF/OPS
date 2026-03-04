@@ -3,8 +3,10 @@ package com.example.Order_Service.service;
 import com.example.Order_Service.dtos.*;
 import com.example.Order_Service.entity.OrderEntity;
 import com.example.Order_Service.entity.OrderItemEntity;
+import com.example.Order_Service.exception.OrderNotFound;
 import com.example.Order_Service.feignClient.ProductClient;
 import com.example.Order_Service.repository.OrderRepository;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ public class OrderService {
     }
 
     @Transactional
+    @CircuitBreaker(name = "product-service",fallbackMethod = "productFallback")
     public OrderResponse createOrder(OrderRequest request) {
         OrderEntity order = new OrderEntity();
         order.setStatus("CREATED");
@@ -52,8 +55,14 @@ public class OrderService {
 
 
     public OrderResponse getOrderById(UUID orderId){
-        OrderEntity order = orderRepository.findById(orderId).orElseThrow(()->new RuntimeException("Order Not Found with id:"));
+        OrderEntity order = orderRepository.findById(orderId).orElseThrow(()->new OrderNotFound("Order Not Found with id: "+orderId));
         return maptoOrderResponseWithProduct(order);
+    }
+
+    public OrderResponse productFallback(OrderRequest request,Exception e ){
+        OrderResponse response = new OrderResponse();
+        response.setOrderStatus("PRODUCT-SERVICE IS DOWN !");
+        return response;
     }
 
     private OrderResponse maptoOrderResponseWithProduct (OrderEntity order){
