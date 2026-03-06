@@ -34,7 +34,7 @@ public class ProductService {
     }
 
     public ProductResponse getProductById(Long id)  {
-        ProductEntity product = productRepository.findById(id).orElseThrow(()->new ProductNotFound("Product Not Found with Id: "+id));
+        ProductEntity product = productRepository.findById(id).orElseThrow(()->new ProductNotFound("Product Not Found ")); // idar id mention that voh remove kiya test ke liye
         return mapToResponse(product);
     }
 
