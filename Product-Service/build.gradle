@@ -47,9 +47,20 @@ dependencies {
 	implementation 'javax.xml.bind:jaxb-api:2.3.1'
 	implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.8'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+//	AWS dependencies
+	implementation 'io.awspring.cloud:spring-cloud-aws-starter-sqs:3.1.1'
+	implementation platform("software.amazon.awssdk:bom:2.25.30")
+//	this is for s3 bucket
+	implementation 'software.amazon.awssdk:s3'
+//	sqs dependency
+//	implementation 'software.amazon.awssdk:sqs'
+	implementation 'software.amazon.awssdk:eventbridge'
 //	Testing
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.mockito:mockito-core'
+	testImplementation 'org.testcontainers:junit-jupiter:1.19.7'
+	testImplementation 'org.testcontainers:postgresql:1.19.7'
+	testImplementation 'org.testcontainers:testcontainers:1.19.7'
 
 
 }
