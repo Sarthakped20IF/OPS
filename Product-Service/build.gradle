@@ -30,6 +30,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+//	Spring Integration
+	implementation 'org.springframework.boot:spring-boot-starter-integration'
+	implementation 'org.springframework.integration:spring-integration-core'
 //	batch processing dependency
 	implementation 'org.springframework.boot:spring-boot-starter-batch'
 	compileOnly 'org.projectlombok:lombok'
@@ -61,6 +64,7 @@ dependencies {
 	testImplementation 'org.testcontainers:junit-jupiter:1.19.7'
 	testImplementation 'org.testcontainers:postgresql:1.19.7'
 	testImplementation 'org.testcontainers:testcontainers:1.19.7'
+	testImplementation 'com.h2database:h2'
 
 
 }
